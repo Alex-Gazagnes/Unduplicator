@@ -92,11 +92,8 @@ INTRO_AMELIORATION ="""
 Amelioration pour la v1.0.2
 - s'assurer de l'ensemble des tabulations dans les boucles "j"
 - supprimer les property useless (toutes)
-- stabiliser et demander le pourcentage à user
 faire des teste avec copie, copy etc etc
 faire des test sur des configs CV alexandre GAZAGNES et CV Alexandre GAZAGNES 2017
-- au fait QUID de la casse????
-- options demander choisir liste des extensions à prendre en compte
 - QUID des "-1" à la fin
 - QUID des copie de copie etc
 - Options : 
@@ -176,9 +173,12 @@ dossier_doublon_avec_slash = "/" + dossier_doublon_sans_slash
 
 fichier_1, fichier_2 = "objet", "objet"
 
+# CI DESSOUS PASSENT DE CONSTNATE à VARIABLE !!!
 TAUX_MATCH_ANALYSE_AVEC_PARENTHESES = 0.5
 TAUX_MATCH_ANALYSE_SANS_PARENTHESES = 0.8
 TAUX_MATCH_PRE_ANALYSE = 0.5
+
+LISTE_EXTENSIONS_TEXTE = [".pdf", ".doc", ".docx", ".odt", ".txt", "" ] # DICO_EXTENSIONS = {'.doc': 4, '.docx': 5, '.pdf': 4, ".odt":4, "":0}
 
 
 # Options
@@ -346,8 +346,8 @@ class Fichier :
 				nom_sans_ext = self.nom
 				ext = ""
 
-		self.extension = self._extension = str(ext)
-		self._nom_sans_extension = self.nom_sans_extension = str(nom_sans_ext)
+		self.extension = self._extension = str(ext.lower())
+		self._nom_sans_extension = self.nom_sans_extension = str(nom_sans_ext.lower())
 
 
 	def maj_parenthese(self):
@@ -446,12 +446,20 @@ def demander_taux_match(pre_ana = TAUX_MATCH_PRE_ANALYSE, avec_para = TAUX_MATCH
 	else :
 		return False, False, False
 	
-	
 
+def demader_liste_extensions(liste_ext = LISTE_EXTENSIONS_TEXTE):
+	"""
+	"""
 	
-TAUX_MATCH_ANALYSE_AVEC_PARENTHESES = 0.5
-TAUX_MATCH_ANALYSE_SANS_PARENTHESES = 0.8
-TAUX_MATCH_PRE_ANALYSE = 0.5
+	rep = input("""Voulez vous utiliser les extensions validées par défault ?
+	{}
+	Pour Oui, tappez {}\n"""\
+		    .format(LISTE_VALEURS_CHOIX_OUI, liste_ext))
+	if rep :
+		return liste_ext
+	else :
+		return 	
+	
 	
 def demander_maj_dossier_parent(dossier=dossier_parent) :
 	"""demander à user si on garde le dossier parent inital, ou tapper un répertoire/dossier de
@@ -780,6 +788,8 @@ demander_print_intro() # savoir si on print l'intro
 option_verbose = demander_option_verbose()
 
 TAUX_MATCH_PRE_ANALYSE, TAUX_MATCH_ANALYSE_AVEC_PARENTHESES, TAUX_MATCH_ANALYSE_SANS_PARENTHESES  = demander_taux_match()
+
+LISTE_EXTENSIONS_TEXTE = demader_liste_extensions()
 
 dossier_parent = demander_maj_dossier_parent() # savoir quel dossier parent on utilise
 
