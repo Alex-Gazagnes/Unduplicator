@@ -6,12 +6,35 @@ du coup 5 + 15  = 20 --> sur 21 lettres : 100% de changes que ca soit le meme no
 	
 	suite_char_conjoint_identique = [5, 15 ]
 	suite_char_conjoint_identique.append(nb_char_conjoint_identique )
+	
+	suite_char_conjoint_identique = list()
+	continuer_car_nb_char_conjoint_identique = True
+	nb_char_conjoint_identique = 0
+	fin_boucle = False
+	nb_strat_boucle = 0
+	
+	if len(fichier_1.nom_sans_extension) > len(fichier_2.nom_sans_extension) :  # on va se baser sur le fichier au nom le plus court
+		fichier_de_reference = fichier_2
+		fichier_de_comapraison = fichier_1
+	else : 
+		fichier_de_reference = fichier_1
+		fichier_de_comapraison = fichier_2
+	
+	while not fin de boucle: # boucle générale, on en sort que quand on parsé l'ensemble de Fichier_1.nom_sans extension
+		while continuer_car_nb_char_conjoint_identique 	: # tant que il y a char conjoint idem  on balaye le nom_sans_extension 
+			for k in range(nb_strat_boucle, len(fichier_de_reference.nom_sans_extension)) :  
 
-	for k in range(min(len(fichier_1.nom_sans_extension), (len(fichier_2.nom_sans_extension))) : 
-		       if fichier_1.nom_sans_extension[k] == fichier_2.nom_sans_extension[k] : 
-		         count+=1 # DEJA aulieu de definir le niveau minimal on aura le socre pour chaque comparaisaon
-		       continuer = True 
-		       else: 
+			      	if fichier_1.nom_sans_extension[k] == fichier_2.nom_sans_extension[k] : 
+				 	nb_char_conjoint_identique+=1 # DEJA aulieu de definir le niveau minimal on aura le socre pour chaque comparaisaon
+			       		continuer_car_nb_char_conjoint_identique = True 
+			       	else:
+			       		continuer_car_nb_char_conjoint_identique = False 
+		       			suite_char_conjoint_identique.append(nb_char_conjoint_identique)
+			       		nb_char_conjoint_identique=0
+		       
+				else : #  chercher 1er nouveau coupe de char identique ... du coté de fichier_1 ou du coté de fichier_2
+		       	char_sur_lequel_on_bute = fichier_1.nom_sans_extension[k]
+		       while : fichier_1.nom_sans_extension[k]
 
 
 
