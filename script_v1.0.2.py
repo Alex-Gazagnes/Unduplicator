@@ -420,8 +420,18 @@ def demander_print_intro(texte = INTRO_TITRE):
 		print(texte)
 	else:
 		print("Dommage...\n")
-
-
+		
+def demander_option_verbose(): 
+	"""
+	"""
+	
+	rep = input("Voulez vous utiliser le mode 'verbose' qui propose d'afficher toute les etapes du process?\nPour Oui, tappez\n"\
+		    .format(LISTE_VALEURS_CHOIX_OUI))
+	if rep :
+		return True
+	else :
+		return False
+	
 def demander_maj_dossier_parent(dossier=dossier_parent) :
 	"""demander à user si on garde le dossier parent inital, ou tapper un répertoire/dossier de
 	son choix, en validant qu'il existe bien...
@@ -745,6 +755,8 @@ def verbose_valider_conditions_avant_traitement(succes, fichier, boucle, val):
 ##################################
 
 demander_print_intro() # savoir si on print l'intro
+
+option_verbose = demander_option_verbose()
 
 dossier_parent = demander_maj_dossier_parent() # savoir quel dossier parent on utilise
 
