@@ -90,10 +90,9 @@ INTRO_FONCTIONNALITES = """
 
 INTRO_AMELIORATION ="""
 Amelioration pour la v1.0.2
-- demander si versbose ou pas
 - s'assurer de l'ensemble des tabulations dans les boucles "j"
 - supprimer les property useless (toutes)
-- stabiliser et demander le pour centages à user
+- stabiliser et demander le pourcentage à user
 faire des teste avec copie, copy etc etc
 faire des test sur des configs CV alexandre GAZAGNES et CV Alexandre GAZAGNES 2017
 - au fait QUID de la casse????
@@ -141,9 +140,7 @@ import shutil
 # Constantes
 ##################################
 
-TAUX_MATCH_ANALYSE_AVEC_PARENTHESES = 0.5
-TAUX_MATCH_ANALYSE_SANS_PARENTHESES = 0.8
-TAUX_MATCH_PRE_ANALYSE = 0.5
+
 
 
 LISTE_EXTENSIONS_TEXTE = [".pdf", ".doc", ".docx", ".odt", ".txt", "" ] # DICO_EXTENSIONS = {'.doc': 4, '.docx': 5, '.pdf': 4, ".odt":4, "":0}
@@ -178,6 +175,10 @@ dossier_doublon_sans_slash = "Dossier_doublons"
 dossier_doublon_avec_slash = "/" + dossier_doublon_sans_slash
 
 fichier_1, fichier_2 = "objet", "objet"
+
+TAUX_MATCH_ANALYSE_AVEC_PARENTHESES = 0.5
+TAUX_MATCH_ANALYSE_SANS_PARENTHESES = 0.8
+TAUX_MATCH_PRE_ANALYSE = 0.5
 
 
 # Options
@@ -425,12 +426,33 @@ def demander_option_verbose():
 	"""
 	"""
 	
-	rep = input("Voulez vous utiliser le mode 'verbose' qui propose d'afficher toute les etapes du process?\nPour Oui, tappez\n"\
+	rep = input("Voulez vous utiliser le mode 'verbose' qui propose d'afficher toute les etapes du process?\nPour Oui, tappez {}\n"\
 		    .format(LISTE_VALEURS_CHOIX_OUI))
 	if rep :
 		return True
 	else :
 		return False
+	
+def demander_taux_match(): 
+	"""
+	"""
+	
+	rep = input("""Voulez vous utiliser les valeurs par défault des valeurs de taux de match?
+	pré-analyse = {}, avec parentheses = {} et sans parentheses = {}
+	Pour Oui, tappez {}\n"""\
+		    .format(LISTE_VALEURS_CHOIX_OUI, TAUX_MATCH_PRE_ANALYSE, TAUX_MATCH_ANALYSE_AVEC_PARENTHESES,\
+			    TAUX_MATCH_ANALYSE_SANS_PARENTHESES))
+	if rep :
+		return True
+	else :
+		return False
+	
+	
+
+	
+TAUX_MATCH_ANALYSE_AVEC_PARENTHESES = 0.5
+TAUX_MATCH_ANALYSE_SANS_PARENTHESES = 0.8
+TAUX_MATCH_PRE_ANALYSE = 0.5
 	
 def demander_maj_dossier_parent(dossier=dossier_parent) :
 	"""demander à user si on garde le dossier parent inital, ou tapper un répertoire/dossier de
