@@ -433,19 +433,18 @@ def demander_option_verbose():
 	else :
 		return False
 	
-def demander_taux_match(): 
+def demander_taux_match(pre_ana = TAUX_MATCH_PRE_ANALYSE, avec_para = TAUX_MATCH_ANALYSE_AVEC_PARENTHESES, sans_para = TAUX_MATCH_ANALYSE_SANS_PARENTHESES): 
 	"""
 	"""
 	
 	rep = input("""Voulez vous utiliser les valeurs par défault des valeurs de taux de match?
 	pré-analyse = {}, avec parentheses = {} et sans parentheses = {}
 	Pour Oui, tappez {}\n"""\
-		    .format(LISTE_VALEURS_CHOIX_OUI, TAUX_MATCH_PRE_ANALYSE, TAUX_MATCH_ANALYSE_AVEC_PARENTHESES,\
-			    TAUX_MATCH_ANALYSE_SANS_PARENTHESES))
+		    .format(LISTE_VALEURS_CHOIX_OUI, pre_ana, avec_para, sans_para))
 	if rep :
-		return True
+		return pre_ana, avec_para, sans_para
 	else :
-		return False
+		return False, False, False
 	
 	
 
@@ -779,6 +778,8 @@ def verbose_valider_conditions_avant_traitement(succes, fichier, boucle, val):
 demander_print_intro() # savoir si on print l'intro
 
 option_verbose = demander_option_verbose()
+
+TAUX_MATCH_PRE_ANALYSE, TAUX_MATCH_ANALYSE_AVEC_PARENTHESES, TAUX_MATCH_ANALYSE_SANS_PARENTHESES  = demander_taux_match()
 
 dossier_parent = demander_maj_dossier_parent() # savoir quel dossier parent on utilise
 
