@@ -1,5 +1,18 @@
 os.path.isfile(path) renvoie True si path désigne un fichier existant
 
+test pour  comaprer cv alexandre GAZAGNES et cv alxandre GAZAGNES :
+on veut en valeur de retour 5 et 15 car la 1er partie comporte une suiet  de 5 lettres identifques et la deuxieme une suite de 15
+du coup 5 + 15  = 20 --> sur 21 lettres : 100% de changes que ca soit le meme nom ! 
+	
+	suite_char_conjoint_identique = [5, 15 ]
+	suite_char_conjoint_identique.append(nb_char_conjoint_identique )
+
+	for k in range(min(len(fichier_1.nom_sans_extension), (len(fichier_2.nom_sans_extension))) : 
+		       if fichier_1.nom_sans_extension[k] == fichier_2.nom_sans_extension[k] : 
+		         count+=1 # DEJA aulieu de definir le niveau minimal on aura le socre pour chaque comparaisaon
+		       continuer = True 
+		       else: 
+
 
 
 
