@@ -20,7 +20,7 @@ comment va-t-on faire?
 		et donc on continuer_car_nb_char_conjoint_identique = True, on reprend notre boucle précendent mais pas de 0 de la ou on a repirs le fil
 		si  ca n'est pas le cas "on a pas repris le fil, on refiat cette operation de rattraparge mais en prebnnat en refernecel'autre fichier et  en parsant le 1er 
 		
-		si daventure on ne retrouve pas le fil
+		si daventure on ne retrouve p fil on reste  sur  la valeur dans la liste 
 		
 		
 	attention il faudrait exclure les lettres "CV" --> TROP FACILE ET FAUSSE NE NOM REEL DU FICHIER
@@ -28,7 +28,7 @@ comment va-t-on faire?
 	suite_char_conjoint_identique = [5, 15 ]
 	suite_char_conjoint_identique.append(nb_char_conjoint_identique )
 	
-	suite_char_conjoint_identique = list()
+	suite_char_conjoint_identique = [0]
 	continuer_car_nb_char_conjoint_identique = True
 	nb_char_conjoint_identique = 0
 	fin_boucle = False
@@ -48,14 +48,17 @@ comment va-t-on faire?
 			      	if fichier_1.nom_sans_extension[k] == fichier_2.nom_sans_extension[k] : 
 				 	nb_char_conjoint_identique+=1 # DEJA aulieu de definir le niveau minimal on aura le socre pour chaque comparaisaon
 			       		continuer_car_nb_char_conjoint_identique = True 
+					if k == len(fichier_de_reference.nom_sans_extension) : fin_de_boucle = True
 			       	else:
 			       		continuer_car_nb_char_conjoint_identique = False 
 		       			suite_char_conjoint_identique.append(nb_char_conjoint_identique)
 			       		nb_char_conjoint_identique=0
 					char_sur_lequel_on_bute = (fichier_de_reference.nom_sans_extension[k], k)
+					
+					if k == len(fichier_de_reference.nom_sans_extension) : fin_de_boucle = True
 		       
 		while (not continuer_car_nb_char_conjoint_identique ) and (not fin_de_boucle) : #  chercher 1er nouveau coupe de char identique ... du coté de fichier_1 ou du coté de fichier_2
-			for m in range(nb_strat_boucle, -5 + len(fichier_de_reference.nom_sans_extension)) :
+			for m in range(k, -4 + len(fichier_de_reference.nom_sans_extension)) :
 				if fichier_de_reference.nom_sans_extension[k:k+4] == fichier_de_comapraison.nom_sans_extension[m:m+4 ] : # on va parser le reste du mot à la recherche de 3 char conjoints identiques 
 					nb_char_conjoint_identique = m 
 					continuer_car_nb_char_conjoint_identique = True 
@@ -64,11 +67,13 @@ comment va-t-on faire?
 				if not continuer_car_nb_char_conjoint_identique :  # si on a pas trouvé en parsant dans un sens.... 
 					# on parse dans l'autre sens ! 
 					
-					for m in range(nb_strat_boucle, -5 + len(fichier_de_reference.nom_sans_extension)) :
+					for m in range(k, -5 + len(fichier_de_reference.nom_sans_extension)) :
 						if fichier_de_reference.nom_sans_extension[m:m+4] == fichier_de_comapraison.nom_sans_extension[k:k+4 ]: # on va parser le reste du mot à la recherche de 3 char conjoints identiques 
 
 							nb_char_conjoint_identique = m 
 							continuer_car_nb_char_conjoint_identique = True 
+							
+							if m == len(fichier_de_reference.nom_sans_extension) : fin_de_boucle = True
 							break
 					
 
