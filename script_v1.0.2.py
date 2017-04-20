@@ -1,8 +1,23 @@
 os.path.isfile(path) renvoie True si path désigne un fichier existant
 
 test pour  comaprer cv alexandre GAZAGNES et cv alxandre GAZAGNES :
-on veut en valeur de retour 5 et 15 car la 1er partie comporte une suiet  de 5 lettres identifques et la deuxieme une suite de 15
-du coup 5 + 15  = 20 --> sur 21 lettres : 100% de changes que ca soit le meme nom ! 
+on veut en valeur de retour 5 et 15 car la 1er partie comporte une suiet  de 5 lettres identifques, il y a un,e coquille et puis la deuxieme une suite de 15
+du coup 5 + 15  = 20 --> sur 21 lettres senchainenet en étant exactement identiques ! 100% de changes que ca soit le meme nom !
+
+comment va-t-on faire? 
+ tres simple: 
+		on ouvre une boucle while 'globale' (fin_de_boucle) qui tourne tant qu'on a pas finide parse l'ensemble du mot
+		
+		on parse lettre à lettre Si c'est égal :c'est top, on compte le nombre de lettre successives identisues (nb_char_conjoint_identique)
+		et on maitinie une valeur booélee dédiée (continuer_car_nb_char_conjoint_identique) à True
+		
+		si on arrive sur une coquille on enregistre  le nombre  de lettre successives identisues dans une liste (suite_char_conjoint_identique)
+		on casse notre boolée dédié (continuer_car_nb_char_conjoint_identique)
+		et on  part à la recherche d'une nouvelle suite de char identiques (nb_char_conjoint_identique = 0)
+		
+		il nous fauit donc repartir à la recherche d'une pire de char identique, mais pas d'unepaire... plustot d'une suite de 3 ou 4 char! 
+	
+	attention il faudrait exclure les lettres "CV" --> TROP FACILE ET FAUSSE NE NOM REEL DU FICHIER
 	
 	suite_char_conjoint_identique = [5, 15 ]
 	suite_char_conjoint_identique.append(nb_char_conjoint_identique )
@@ -20,8 +35,8 @@ du coup 5 + 15  = 20 --> sur 21 lettres : 100% de changes que ca soit le meme no
 		fichier_de_reference = fichier_1
 		fichier_de_comapraison = fichier_2
 	
-	while not fin de boucle: # boucle générale, on en sort que quand on parsé l'ensemble de Fichier_1.nom_sans extension
-		while continuer_car_nb_char_conjoint_identique 	: # tant que il y a char conjoint idem  on balaye le nom_sans_extension 
+	while (not fin_ de_boucle): # boucle générale, on en sort que quand on parsé l'ensemble de Fichier_1.nom_sans extension
+		while continuer_car_nb_char_conjoint_identique and (not fin_de_boucle) 	: # tant que il y a char conjoint idem  on balaye le nom_sans_extension 
 			for k in range(nb_strat_boucle, len(fichier_de_reference.nom_sans_extension)) :  
 
 			      	if fichier_1.nom_sans_extension[k] == fichier_2.nom_sans_extension[k] : 
@@ -31,10 +46,25 @@ du coup 5 + 15  = 20 --> sur 21 lettres : 100% de changes que ca soit le meme no
 			       		continuer_car_nb_char_conjoint_identique = False 
 		       			suite_char_conjoint_identique.append(nb_char_conjoint_identique)
 			       		nb_char_conjoint_identique=0
+					char_sur_lequel_on_bute = (fichier_de_reference.nom_sans_extension[k], k)
 		       
-				else : #  chercher 1er nouveau coupe de char identique ... du coté de fichier_1 ou du coté de fichier_2
-		       	char_sur_lequel_on_bute = fichier_1.nom_sans_extension[k]
-		       while : fichier_1.nom_sans_extension[k]
+		while (not continuer_car_nb_char_conjoint_identique ) and (not fin_de_boucle) : #  chercher 1er nouveau coupe de char identique ... du coté de fichier_1 ou du coté de fichier_2
+			for m in range(nb_strat_boucle, -5 + len(fichier_de_reference.nom_sans_extension)) :
+				if fichier_de_reference.nom_sans_extension[k:k+4] == fichier_de_comapraison.nom_sans_extension[m:m+4 ] : # on va parser le reste du mot à la recherche de 3 char conjoints identiques 
+					nb_char_conjoint_identique = m 
+					continuer_car_nb_char_conjoint_identique = True 
+					break
+					
+				if not continuer_car_nb_char_conjoint_identique :  # si on a pas trouvé en parsant dans un sens.... 
+					# on parse dans l'autre sens ! 
+					
+					for m in range(nb_strat_boucle, -5 + len(fichier_de_reference.nom_sans_extension)) :
+						if fichier_de_reference.nom_sans_extension[m:m+4] == fichier_de_comapraison.nom_sans_extension[k:k+4 ]: # on va parser le reste du mot à la recherche de 3 char conjoints identiques 
+
+							nb_char_conjoint_identique = m 
+							continuer_car_nb_char_conjoint_identique = True 
+							break
+					
 
 
 
