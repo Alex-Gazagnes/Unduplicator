@@ -1,3 +1,8 @@
+os.path.isfile(path) renvoie True si path désigne un fichier existant
+
+
+
+
 INTRO_TITRE = """
 
 ###############################################################
@@ -104,7 +109,7 @@ faire des test sur des configs CV alexandre GAZAGNES et CV Alexandre GAZAGNES 20
 - comme évoqué qui de "cv alexandre gazagnes" et "cv alxandre gazagnes"
 	on a pas tout mais on voit que sur les 24 char, on en a un enchainement de 18 similaires
 - imaginons qu'on ai "cv alexandre gazagnes" et profil de "mr gazagnes alexandre"
-- comment prendre en compte la taille su fichier?
+- comment prendre en compte la taille su fichier? -- > os.path.getsize(path) renvoie la taille du fichier path
 - quid d'une bonne GUI
 - le script se gere til idem sur tous les OS?
 		faire des tests sur 10, 150, 500, 1000 fichiers
