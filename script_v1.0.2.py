@@ -16,7 +16,13 @@ comment va-t-on faire?
 		et on  part à la recherche d'une nouvelle suite de char identiques (nb_char_conjoint_identique = 0)
 		
 		il nous fauit donc repartir à la recherche d'une pire de char identique, mais pas d'unepaire... plustot d'une suite de 3 ou 4 char! 
-	
+		on part donc d'u fichier et  on avanceen parsant les char de l'autre fichier, si on trouve une suite  de 3 char identiques, bingo ou  aretrouvé le fil du  proscess
+		et donc on continuer_car_nb_char_conjoint_identique = True, on reprend notre boucle précendent mais pas de 0 de la ou on a repirs le fil
+		si  ca n'est pas le cas "on a pas repris le fil, on refiat cette operation de rattraparge mais en prebnnat en refernecel'autre fichier et  en parsant le 1er 
+		
+		si daventure on ne retrouve pas le fil
+		
+		
 	attention il faudrait exclure les lettres "CV" --> TROP FACILE ET FAUSSE NE NOM REEL DU FICHIER
 	
 	suite_char_conjoint_identique = [5, 15 ]
